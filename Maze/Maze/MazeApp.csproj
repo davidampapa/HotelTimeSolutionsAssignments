@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{5394457A-7428-484F-B89C-FCF2C9523B5B}</ProjectGuid>
+    <OutputType>Exe</OutputType>
+    <RootNamespace>Maze</RootNamespace>
+    <AssemblyName>Maze</AssemblyName>
+    <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <Deterministic>true</Deterministic>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="controller\FileLoader\FileLoader.cs" />
+    <Compile Include="controller\MazeApplicationController.cs" />
+    <Compile Include="model\Configuration\CellType.cs" />
+    <Compile Include="model\Configuration\Maze.cs" />
+    <Compile Include="model\Configuration\Point.cs" />
+    <Compile Include="model\Dwarfs\BfsDwarf.cs" />
+    <Compile Include="model\Dwarfs\IDwarf.cs" />
+    <Compile Include="model\Dwarfs\LeftDwarf.cs" />
+    <Compile Include="model\Dwarfs\RandomDwarf.cs" />
+    <Compile Include="model\Dwarfs\RightDwarf.cs" />
+    <Compile Include="model\Solver\BfsSolver.cs" />
+    <Compile Include="model\Solver\ISolver.cs" />
+    <Compile Include="model\Solver\LeftSolver.cs" />
+    <Compile Include="model\Solver\RandomSolver.cs" />
+    <Compile Include="model\Solver\RightSolver.cs" />
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+    <None Include="Data\Maze.dat" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="view\" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>

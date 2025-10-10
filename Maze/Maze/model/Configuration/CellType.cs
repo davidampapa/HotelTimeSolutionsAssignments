@@ -6,5 +6,5 @@ using System.Threading.Tasks;
 
 namespace Maze.Model
 {
-    public enum CellType { Empty, Wall, Start, Finish }
+    public enum CellType { Empty, Wall, Start, Finish, Dwarf }
 }

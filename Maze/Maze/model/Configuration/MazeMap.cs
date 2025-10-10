@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 
 namespace Maze.Model
 {
-    public sealed class MazeMap
+    public class MazeMap
     {
-        private readonly CellType[,] _grid;
+        public CellType[,] _grid;
 
         public int Rows { get; }
         public int Cols { get; }
@@ -58,6 +58,7 @@ namespace Maze.Model
                         case CellType.Wall: ch = '#'; break;
                         case CellType.Start: ch = 'S'; break;
                         case CellType.Finish: ch = 'F'; break;
+                        case CellType.Dwarf: ch = 'D'; break;
                         default: ch = ' '; break;
                     }
                     line[c] = ch;

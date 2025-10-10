@@ -4,9 +4,12 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Maze.model.Dwarfs
+namespace Maze.Model
 {
-    class LeftDwarf : IDwarf
+    class LeftDwarf : DwarfBase
     {
+        override public Point? Move()  { 
+            return null;
+        }
     }
 }

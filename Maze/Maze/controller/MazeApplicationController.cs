@@ -10,11 +10,14 @@ namespace Maze.Controller
     class MazeApplicationController
     {
         private FileLoader fileLoader;
+        private GameController gameController;
         public MazeApplicationController() {
             fileLoader = new FileLoader();
         }
         public void RunApplication() {
             MazeMap maze = fileLoader.LoadFromFile();
+            gameController = new GameController(maze);
+            gameController.Run();
             maze.PrintToConsole();
         }
     }

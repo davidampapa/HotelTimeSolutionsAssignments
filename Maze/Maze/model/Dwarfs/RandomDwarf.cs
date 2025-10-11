@@ -10,25 +10,26 @@ namespace Maze.Model
     class RandomDwarf : DwarfBase
     {
         private MazeMap _maze;
+        private int _delay;
+        private int _ticks = 0;
+
         public RandomDwarf(MazeMap maze) 
         {
-        
+            _maze = maze;
+            _delay = new Random().Next(5, 20);
         }
         override public Point? Move()
         {
             if (Finished) return null;
+            _ticks++;
 
-            // deterministické rozhodnutí z (id, tick)
-            var key = $"teleport|id:{/*tvoje Id*/0}|tick:{_t}";
-            if (HRand.ChancePermille(key, 30))   // ~3 % na tick
+            if (_ticks >= _delay)
             {
                 Position = _maze.Finish;
                 Finished = true;
-                return Position;
             }
 
-            _t++;
-            return Position; // nebo udělej krok, pokud má i běžný pohyb
+            return Position;
         }
     }
 }

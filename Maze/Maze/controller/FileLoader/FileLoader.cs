@@ -14,17 +14,15 @@ namespace Maze.Controller
         public MazeMap LoadFromFile()
         {
             var fullPath = Path.Combine(
-                Directory.GetParent(AppDomain.CurrentDomain.BaseDirectory).Parent.Parent.FullName,   // např. ...\bin\Debug\
+                Directory.GetParent(AppDomain.CurrentDomain.BaseDirectory).Parent.Parent.FullName,
                 "Data",
                 "Maze.dat");
 
             if (!File.Exists(fullPath))
                 throw new Exception("Soubor nenalezen: " + fullPath);
 
-            // … tvoje načítání …
             var rawLines = File.ReadAllLines(fullPath);
 
-            // odfiltruj prázdné trailing řádky
             var lines = System.Array.FindAll(rawLines, l => !string.IsNullOrWhiteSpace(l));
             if (lines.Length == 0) throw new System.Exception("Soubor je prázdný.");
 

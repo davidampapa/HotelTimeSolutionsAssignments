@@ -14,58 +14,53 @@ namespace Maze.Controller
         private readonly List<DwarfBase> _dwarfs = new List<DwarfBase>();
         //private readonly Spawner _spawner;
         private readonly ConsoleRenderer _renderer;
-        private readonly Random _rng = new Random();
+        private int _gameTick = 0;
+
 
         public GameController(MazeMap maze)
         {
             _maze = maze;
-            //_spawner = new Spawner(maze);
             _renderer = new ConsoleRenderer(maze);
+        }
+
+        private void SpawnDwarfInMaze(DwarfBase dwarf)
+        {
+            _dwarfs.Add(dwarf);
+            _maze._grid[_maze.Start.Row, _maze.Start.Col] = CellType.Dwarf;
         }
 
         public void Run()
         {
-            _dwarfs.Add(new BfsDwarf(_maze));
-            _maze._grid[_maze.Start.Row, _maze.Start.Col] = CellType.Dwarf;
+            SpawnDwarfInMaze(new BfsDwarf(_maze));
             while (true)
             {
-                var oldPos = _dwarfs[0].Position;
-                _maze._grid[oldPos.Row, oldPos.Col] = CellType.Empty;
+                Console.SetCursorPosition(0, 0);
+                if (_gameTick == 50)
+                    SpawnDwarfInMaze(new RandomDwarf(_maze));
+                
+                bool alldone = true;
+                foreach (var dwarf in _dwarfs) 
+                {
+                    var oldPos = dwarf.Position;
+                    _maze._grid[oldPos.Row, oldPos.Col] = CellType.Empty;
 
-                Point? newPos = _dwarfs[0].Move();
-                if (newPos == null) break;
+                    Point? newPos = dwarf.Move();
+                    
+                    if (newPos == null) break;
 
-                _maze._grid[newPos.Value.Row, newPos.Value.Col] = CellType.Dwarf;
-
+                    if(!dwarf.Finished) alldone = false;
+                    _maze._grid[newPos.Value.Row, newPos.Value.Col] = CellType.Dwarf;
+                }
                 Console.Clear();
+                Console.WriteLine("\x1b[3J");
+                if (alldone) break;
                 _renderer.PrintToConsole();
+                Thread.Sleep(250);
 
-                Thread.Sleep(100);
+                _gameTick++;
             }
 
-            //Console.SetCursorPosition(0, _maze.Rows + 1);
             Console.WriteLine("Hotovo. Všichni trpaslíci v cíli.");
         }
     }
 }
-// spawn
-//_spawner.TrySpawn(_dwarfs, _rng);
-
-// krok každého trpaslíka
-/*   for (int i = 0; i < _dwarfs.Count; i++)
-   {
-       var d = _dwarfs[i];
-       if (!d.Finished)
-       {
-           d.Step(_maze, _rng);
-           _renderer.UpdateDwarf(d);
-       }
-   }
-
-   // ukončení: všichni ve finiši a už není co spawnovat
-   bool allDone = _spawner.AllSpawned;
-   for (int i = 0; i < _dwarfs.Count && allDone; i++)
-       if (!_dwarfs[i].Finished) allDone = false;
-
-   if (allDone) break;
-   */

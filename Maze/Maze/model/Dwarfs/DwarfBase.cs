@@ -11,11 +11,5 @@ namespace Maze.Model
         public Point Position { get; protected set; }
         public bool Finished { get; protected set; }
         public abstract Point? Move();
-
-        protected void SetFinishedIfAt(Point target)
-        {
-            if (Position.Row == target.Row && Position.Col == target.Col)
-                Finished = true;
-        }
     }
 }

@@ -1,10 +1,33 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Maze.Model
+﻿namespace Maze.Model
 {
-    public enum CellType { Empty, Wall, Start, Finish, Dwarf }
+    /// <summary>
+    /// Represents the possible types of cells that can appear in the maze grid.
+    /// </summary>
+    public enum CellType
+    {
+        /// <summary>
+        /// A walkable.
+        /// </summary>
+        Empty,
+
+        /// <summary>
+        /// A non-walkable obstacle cell (wall).
+        /// </summary>
+        Wall,
+
+        /// <summary>
+        /// The starting position in the maze.
+        /// </summary>
+        Start,
+
+        /// <summary>
+        /// The target or goal position in the maze.
+        /// </summary>
+        Finish,
+
+        /// <summary>
+        /// A cell occupied by a dwarf.
+        /// </summary>
+        Dwarf
+    }
 }

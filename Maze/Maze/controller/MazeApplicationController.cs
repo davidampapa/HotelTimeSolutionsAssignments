@@ -1,24 +1,41 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Maze.Model;
+﻿using Maze.Model;
 
 namespace Maze.Controller
 {
+    /// <summary>
+    /// Application controller that starts the game loop.
+    /// </summary>
     class MazeApplicationController
     {
+        /// <summary>
+        /// Helper responsible for reading the maze definition from file.
+        /// </summary>
         private FileLoader fileLoader;
+
+        /// <summary>
+        /// Game controller that manages the game loop.
+        /// </summary>
         private GameController gameController;
-        public MazeApplicationController() {
+
+        /// <summary>
+        /// Creates a new <see cref="MazeApplicationController"/> and initializes the file loader.
+        /// </summary>
+        public MazeApplicationController()
+        {
             fileLoader = new FileLoader();
         }
-        public void RunApplication() {
+
+        /// <summary>
+        /// Loads the maze and runs the game simulation.
+        /// </summary>
+        /// <remarks>
+        /// This method blocks until the game loop finishes.
+        /// </remarks>
+        public void RunApplication()
+        {
             MazeMap maze = fileLoader.LoadFromFile();
             gameController = new GameController(maze);
             gameController.Run();
-            maze.PrintToConsole();
         }
     }
 }

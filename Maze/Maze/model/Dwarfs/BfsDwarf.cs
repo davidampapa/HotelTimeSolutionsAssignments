@@ -33,7 +33,7 @@ namespace Maze.Model
                 if (u.Row == maze.Finish.Row && u.Col == maze.Finish.Col)
                     break;
 
-                foreach (var v in maze.Neighbors4(u))
+                foreach (Point v in maze.Neighbors4(u))
                 {
                     if (seen.Contains(v)) continue;
                     seen.Add(v);
@@ -56,7 +56,6 @@ namespace Maze.Model
             }
             rev.Reverse();
 
-            // Naplnit frontu kroků
             for (int i = 0; i < rev.Count; i++)
                 _path.Enqueue(rev[i]);
         }
@@ -70,7 +69,7 @@ namespace Maze.Model
                 Finished = (Position.Row == _finish.Row && Position.Col == _finish.Col);
                 return null;
             }
-
+            
             Position = _path.Dequeue();
 
             if (Position.Row == _finish.Row && Position.Col == _finish.Col)

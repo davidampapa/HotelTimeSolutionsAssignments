@@ -16,7 +16,8 @@ namespace Maze.Model
         public RandomDwarf(MazeMap maze) 
         {
             _maze = maze;
-            _delay = new Random().Next(5, 20);
+            Position = maze.Start;
+            _delay = new Random().Next(5, 40);
         }
         override public Point? Move()
         {

@@ -43,6 +43,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="controller\DwarfSpawner\DwarfSpawner.cs" />
     <Compile Include="controller\FileLoader\FileLoader.cs" />
     <Compile Include="controller\GameController\GameController.cs" />
     <Compile Include="controller\MazeApplicationController.cs" />
@@ -54,6 +55,7 @@
     <Compile Include="model\Dwarfs\LeftDwarf.cs" />
     <Compile Include="model\Dwarfs\RandomDwarf.cs" />
     <Compile Include="model\Dwarfs\RightDwarf.cs" />
+    <Compile Include="model\Dwarfs\WallFoloverDwarfBase.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="view\ConsoleRenderer.cs" />

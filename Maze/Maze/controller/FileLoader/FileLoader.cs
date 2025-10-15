@@ -36,13 +36,6 @@ namespace Maze.Controller
         /// Thrown when the file is not found, the file is empty, line lengths are inconsistent,
         /// or when either the start (<c>S</c>) or finish (<c>F</c>) marker is missing.
         /// </exception>
-        /// <example>
-        /// Typical usage:
-        /// <code>
-        /// var loader = new FileLoader();
-        /// MazeMap map = loader.LoadFromFile();
-        /// </code>
-        /// </example>
         public MazeMap LoadFromFile()
         {
             // read file

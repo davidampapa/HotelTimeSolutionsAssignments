@@ -68,7 +68,6 @@ namespace Maze.controller
                     _dwarfs.Add(new BfsDwarf(_maze));
                     return true;
             }
-
             return false;
         }
     }

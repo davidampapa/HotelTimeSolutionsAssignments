@@ -3,28 +3,46 @@ using System;
 
 namespace Maze.Model
 {
-    // Trpaslík, který se drží levé zdi: zkusí doleva, rovně, doprava, otočka.
-    internal sealed class LeftDwarf : WallFoloverDwarfBase
+    /// <summary>
+    /// Dwarf that follows the left wall in the maze to reach the finish.
+    /// </summary>
+    internal sealed class LeftDwarf : WallFolloverDwarfBase
     {
+        /// <summary>
+        /// Reference to the maze map.
+        /// </summary>
         private readonly MazeMap _maze;
 
-        // směr, kam je trpaslík „otočený“
+        /// <summary>
+        /// Current facing direction of the dwarf.
+        /// </summary>
         private Direction _facing;
 
+        /// <summary>
+        /// Initializes a new instance of <see cref="LeftDwarf"/> at the maze start, facing down.
+        /// </summary>
+        /// <param name="maze">Maze map to solve.</param>
         public LeftDwarf(MazeMap maze)
         {
             _maze = maze;
             Finished = false;
             Position = _maze.Start;
-            _facing = Direction.Down; // počáteční orientace – klidně změň dle potřeby
+            _facing = Direction.Down;
         }
 
+        /// <summary>
+        /// Moves the dwarf one step according to the left-hand wall-following strategy.
+        /// Tries to move left, forward, right, or backward (in that order) relative to current facing.
+        /// </summary>
+        /// <returns>
+        /// The new position after moving, or <c>null</c> if the dwarf has finished or cannot move.
+        /// </returns>
         public override Point? Move()
         {
             if (Finished) return null;
-            Console.WriteLine("Snaha o pohyb");
 
-            var tryOrder = new[]
+            // Order of directions to try: left, forward, right, backward
+            Direction[] tryOrder = new[]
             {
                 LeftOf(_facing),
                 _facing,
@@ -32,11 +50,13 @@ namespace Maze.Model
                 Opposite(_facing)
             };
 
+            // Try each direction in order
             for (int i = 0; i < tryOrder.Length; i++)
             {
                 var dir = tryOrder[i];
                 var next = Next(Position, dir);
 
+                // Move if the next cell is walkable
                 if (_maze.IsWalkable(next.Row, next.Col))
                 {
                     _facing = dir;
@@ -46,12 +66,16 @@ namespace Maze.Model
                 }
             }
 
-            // obklopen zdmi – nemůže se pohnout
+            // No move possible
             return null;
         }
 
-        // ---------- helpers ----------
-
+        /// <summary>
+        /// Calculates the next point in the maze given a direction.
+        /// </summary>
+        /// <param name="p">Current position.</param>
+        /// <param name="d">Direction to move.</param>
+        /// <returns>The next position after moving in the given direction.</returns>
         protected override Point Next(Point p, Direction d)
         {
             switch (d)

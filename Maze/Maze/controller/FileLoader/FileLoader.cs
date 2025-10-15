@@ -16,12 +16,12 @@ namespace Maze.Controller
         /// <summary>
         /// Relative folder that contains the maze file (from the project root).
         /// </summary>
-        private readonly string folder = "Data";
+        private readonly string _folder = "Data";
 
         /// <summary>
         /// Maze file name to load.
         /// </summary>
-        private readonly string fileName = "Maze.dat";
+        private readonly string _fileName = "Maze.dat";
 
         /// <summary>
         /// Initializes a new instance of <see cref="FileLoader"/>.
@@ -41,8 +41,8 @@ namespace Maze.Controller
             // read file
             var fullPath = Path.Combine(
                 Directory.GetParent(AppDomain.CurrentDomain.BaseDirectory).Parent.Parent.FullName,
-                folder,
-                fileName);
+                _folder,
+                _fileName);
 
             if (!File.Exists(fullPath))
                 throw new Exception("Soubor nenalezen: " + fullPath);

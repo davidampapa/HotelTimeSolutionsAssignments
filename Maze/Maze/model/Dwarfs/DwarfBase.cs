@@ -10,7 +10,7 @@ namespace Maze.Model
     /// Abstract base class for all dwarfs navigating the maze.
     /// Provides common properties and logic for position tracking and completion status.
     /// </summary>
-    internal abstract class DwarfBase
+    abstract class DwarfBase
     {
         /// <summary>
         /// Current position of the dwarf in the maze.

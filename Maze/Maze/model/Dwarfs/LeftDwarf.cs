@@ -6,7 +6,7 @@ namespace Maze.Model
     /// <summary>
     /// Dwarf that follows the left wall in the maze to reach the finish.
     /// </summary>
-    internal sealed class LeftDwarf : WallFolloverDwarfBase
+    class LeftDwarf : WallFolloverDwarfBase
     {
         /// <summary>
         /// Reference to the maze map.

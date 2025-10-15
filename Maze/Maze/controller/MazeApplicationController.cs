@@ -10,19 +10,19 @@ namespace Maze.Controller
         /// <summary>
         /// Helper responsible for reading the maze definition from file.
         /// </summary>
-        private FileLoader fileLoader;
+        private FileLoader _fileLoader;
 
         /// <summary>
         /// Game controller that manages the game loop.
         /// </summary>
-        private GameController gameController;
+        private GameController _gameController;
 
         /// <summary>
         /// Creates a new <see cref="MazeApplicationController"/> and initializes the file loader.
         /// </summary>
         public MazeApplicationController()
         {
-            fileLoader = new FileLoader();
+            _fileLoader = new FileLoader();
         }
 
         /// <summary>
@@ -33,9 +33,9 @@ namespace Maze.Controller
         /// </remarks>
         public void RunApplication()
         {
-            MazeMap maze = fileLoader.LoadFromFile();
-            gameController = new GameController(maze);
-            gameController.Run();
+            MazeMap maze = _fileLoader.LoadFromFile();
+            _gameController = new GameController(maze);
+            _gameController.Run();
         }
     }
 }

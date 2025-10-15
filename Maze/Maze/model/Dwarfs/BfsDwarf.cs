@@ -9,7 +9,7 @@ namespace Maze.Model
     /// <summary>
     /// Dwarf that finds its path through the maze using BFS.
     /// </summary>
-    internal class BfsDwarf : DwarfBase
+    class BfsDwarf : DwarfBase
     {
         /// <summary>
         /// Queue containing the sequence of points representing the path from start to finish.

@@ -5,6 +5,8 @@ VisualStudioVersion = 17.14.36518.9
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MazeApp", "Maze\MazeApp.csproj", "{5394457A-7428-484F-B89C-FCF2C9523B5B}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Fujtajbl", "Fujtajbl\Fujtajbl.csproj", "{0A8FA90C-3006-4D6E-B095-700D580E53CA}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{5394457A-7428-484F-B89C-FCF2C9523B5B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{5394457A-7428-484F-B89C-FCF2C9523B5B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{5394457A-7428-484F-B89C-FCF2C9523B5B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0A8FA90C-3006-4D6E-B095-700D580E53CA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0A8FA90C-3006-4D6E-B095-700D580E53CA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0A8FA90C-3006-4D6E-B095-700D580E53CA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0A8FA90C-3006-4D6E-B095-700D580E53CA}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

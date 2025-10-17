@@ -43,7 +43,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="controller\DwarfSpawner\DwarfSpawner.cs" />
+    <Compile Include="model\DwarfSpawner\DwarfSpawner.cs" />
     <Compile Include="controller\FileLoader\FileLoader.cs" />
     <Compile Include="controller\GameController\GameController.cs" />
     <Compile Include="controller\MazeApplicationController.cs" />
